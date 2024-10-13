@@ -105,7 +105,7 @@ export class AuthService implements OnDestroy {
 		return this.http
 			.post<AuthResponseData>(
 				`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${
-					environment.firebaseAPIKey
+					environment.firebaseConfig.apiKey
 				}`,
 				{email, password, returnSecureToken: true})
 			.pipe(tap(this.setUserData.bind(this)));
@@ -117,7 +117,7 @@ export class AuthService implements OnDestroy {
 		return this.http
 			.post<AuthResponseData>(
 				`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${
-					environment.firebaseAPIKey
+					environment.firebaseConfig.apiKey
 				}`,
 				{email, password, returnSecureToken: true})
 			.pipe(tap(this.setUserData.bind(this)));
